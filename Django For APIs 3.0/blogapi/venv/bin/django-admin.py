@@ -1,4 +1,4 @@
-#!/mnt/5E8257BB8257967D/1.MY_WORK/Python-Programming/Django For APIs 3.0/blogapi/venv/bin/python3
+#!/media/emran/EMRAN-DESKTOP/1.MY_WORK/Python-Programming/Django For APIs 3.0/blogapi/venv/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

@@ -37,9 +37,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', # Site Framework
 
     # 3rd Party
-    'rest_framework',
+    'rest_framework', # Django Rest Framework
+    'rest_framework.authtoken', # Generates the token on the server
+    'allauth', # new
+    'allauth.account', # new
+    'allauth.socialaccount', # new
+
+    'dj_rest_auth', # gives us login, logout and password reset endpoints
+    'dj_rest_auth.registration', # new
+
+    'drf_yasg', # Documentation
 
     # Local
     'posts.apps.PostsConfig',
@@ -125,9 +135,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# New Things added from here
+
 # new
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [ # new
+        'rest_framework.authentication.SessionAuthentication', # For session based auth that also needed for browsable API ( Browser )
+        'rest_framework.authentication.TokenAuthentication', # For token base auth
+    ],
 }
+
+# The email back-end config is needed since by default an email will be sent when a new
+# user is registered, asking them to confirm their account.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
+
+# SITE_ID is a way to host multiple websites from the same Django project.
+SITE_ID = 1 # new
