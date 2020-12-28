@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # 3rd Party
     'taggit',
+    'django.contrib.postgres',
 
     # Local
     'blog.apps.BlogConfig',
@@ -84,9 +85,20 @@ WSGI_APPLICATION = 'core_project.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
+    # Default SQLite3
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+
+    # Postgresql
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'blog',
+        'USER': 'blog',
+        'PASSWORD': '123456',
+        'HOST': 'localhost', # the missing piece of the puzzle 
+        'PORT': '', # optional, I don't need this since I'm using the standard port
     }
 }
 

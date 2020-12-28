@@ -21,7 +21,9 @@ class CommentForm(forms.ModelForm):
         model   = Comment
         fields  = ('name','email','body')
         # exclude = ('updated','active') # if you want to exlude some field use it instead of fields variable
-        
+
+class SearchForm(forms.Form):
+    query = forms.CharField()
 
 
 
