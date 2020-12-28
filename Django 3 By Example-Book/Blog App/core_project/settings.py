@@ -38,6 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # New added for site framework
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+
+    # 3rd Party
+    'taggit',
+
     # Local
     'blog.apps.BlogConfig',
 ]
@@ -121,3 +128,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# New Things added from here
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# site frameworks need it
+SITE_ID = 1
