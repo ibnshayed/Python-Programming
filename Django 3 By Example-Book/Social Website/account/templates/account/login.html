@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-6">
+                <div class="card">
+                    <div class="card-body py-5 px-5">
+                        <div class="text-center">
+                            <h1>Login</h1>
+                            <p>Please, use the following form to login</p>
+                        </div>
+
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            <!-- {{ form|crispy }} -->
+
+                            <div class="mb-2">
+                                {{form.username|as_crispy_field}}
+                            </div>
+                            <div class="mb-3">
+                                {{form.password|as_crispy_field}}
+                            </div>
+
+                            <!-- without crispy forms -->
+                            <!-- {% for field in form %}
+                                <div class="mb-3">
+                                    <label>{{field.name|title}}:</label>
+                                    {{field}}
+                                </div>
+                            {% endfor %} -->
+
+                            <!-- Without for loop and crispy forms -->
+                            <!-- <div class="mb-3">
+                                <label>{{form.username.name|title}}:</label>
+                                {{form.username}}
+                            </div>
+                            <div class="mb-3">
+                                <label>{{form.password.name|title}}:</label>
+                                {{form.password}}
+                            </div> -->
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Log in</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
