@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
 
+    # For Postgresql database
+    'django.contrib.postgres',
+
     # 3rd Party
     'taggit',
-    'django.contrib.postgres',
 
     # Local
     'blog.apps.BlogConfig',
