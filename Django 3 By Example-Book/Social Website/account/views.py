@@ -4,7 +4,10 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
-from .forms import LoginForm
+from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
+
+from .models import Profile
+from django.contrib import messages
 
 # Create your views here.
 
@@ -36,3 +39,42 @@ def user_login(request):
         form = LoginForm()
     context = {'form': form}
     return render(request, 'account/login.html', context)
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            # Create a new user object but avoid saving it yet
+            new_user = user_form.save(commit=False)
+            # Set the chosen password
+            new_user.set_password(user_form.cleaned_data['password'])
+            # Save the User object
+            new_user.save()
+            # Create the user profile
+            Profile.objects.create(user=new_user)
+            context = {'new_user': new_user}
+            return render(request,'registration/register_done.html', context)
+    else:
+        user_form = UserRegistrationForm()
+    context = {'user_form': user_form}
+    return render(request,'registration/register.html', context)
+
+@login_required
+def edit(request):
+    if request.method == 'POST':
+        user_form    = UserEditForm(instance=request.user,data=request.POST)
+        profile_form = ProfileEditForm(instance=request.user.profile,
+                                        data=request.POST,
+                                        files=request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            # not in book (python 3 by example) but I found in django document
+            messages.success(request, 'Profile details updated.')
+    else:
+        user_form       = UserEditForm(instance=request.user)
+        profile_form    = ProfileEditForm(instance=request.user.profile)
+
+    context = {'user_form': user_form, 'profile_form': profile_form}
+
+    return render(request,'registration/edit.html', context)

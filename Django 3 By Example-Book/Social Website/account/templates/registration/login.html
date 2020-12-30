@@ -1,13 +1,13 @@
 {% extends "index.html" %}
 {% load crispy_forms_tags %}
 
-{% block title %}Log-in{% endblock %}
+{% block title %}Login{% endblock %}
 
 {% block content %}
 
     <div class="container">
         <div class="row justify-content-md-center">
-            <div class="col col-6">
+            <div class="col col-md-6">
                 <div class="card">
                     <div class="card-body py-5 px-5">
                         <div class="text-center">
@@ -15,10 +15,11 @@
                             {% if form.errors %}
                                 <p>
                                     Your username and password didn't match.
-                                    Please try again.
+                                    Please try again. 
                                 </p>
                             {% else %}
-                                <p>Please, use the following form to login</p>
+                                <p>Please, use the following form to login. If you don't have an
+                                    account <a href="{% url "register" %}">register here</a></p>
                             {% endif %}
                         </div>
 
@@ -36,6 +37,8 @@
                                 <button type="submit" class="btn btn-primary">Log in</button>
                             </div>
                         </form>
+
+                        <p class="mt-2"><a href="{% url "password_reset" %}">Forgotten your password?</a></p>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit your account{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body p-5">
+                {% if messages %}
+                    <div class="alert alert-success">
+                        <ul>
+                            {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <h1>Edit your account</h1>
+                <p>You can edit your account using the following form:</p>
+                <form method="post" enctype="multipart/form-data">
+                    {{ user_form|crispy }}
+                    {{ profile_form|crispy }}
+                    {% csrf_token %}
+                    <button class="btn btn-primary mt-2" type="submit">Save Change</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+{% endblock %}
