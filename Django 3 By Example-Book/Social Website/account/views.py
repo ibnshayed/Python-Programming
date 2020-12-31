@@ -71,6 +71,8 @@ def edit(request):
             profile_form.save()
             # not in book (python 3 by example) but I found in django document
             messages.success(request, 'Profile details updated.')
+        else:
+            messages.error(request, 'Error updating your profile')
     else:
         user_form       = UserEditForm(instance=request.user)
         profile_form    = ProfileEditForm(instance=request.user.profile)

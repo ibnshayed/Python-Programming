@@ -26,13 +26,14 @@ SECRET_KEY = '%%^%-e=f)3u2d)fh#zsa1%mlqwqov$yrfetm_j-rb+!6e1je62'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mysite.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
 
+    # Local
     # so that django give priority over other app
     'account.apps.AccountConfig',
 
@@ -45,6 +46,8 @@ INSTALLED_APPS = [
 
     # 3rd Party
     'crispy_forms',
+    'social_django',
+    'django_extensions',
 
     # Local
 ]
@@ -143,3 +146,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # for media files like images
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# For Authentication backend
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend', #this is my account authentication
+    'social_core.backends.facebook.FacebookOAuth2',
+]

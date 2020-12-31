@@ -20,6 +20,7 @@ urlpatterns = [
 
     # above all path or url include it by default
     path('', include('django.contrib.auth.urls')),
+    
     path('register/', register, name='register'),
     path('edit/', edit, name='edit'),
 
