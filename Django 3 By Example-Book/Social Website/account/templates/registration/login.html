@@ -23,6 +23,12 @@
                             {% endif %}
                         </div>
 
+                        
+                        <a class="btn my-5" style="background-color: #3b5998; color: #fff;" href="{% url 'social:begin' 'facebook' %}">Sign in with Facebook</a>
+
+                        <a class="btn" style="background-color: #DB4437; color: #fff;" href="{% url 'social:begin' 'google-oauth2' %}">Login with
+                            Google</a>
+
                         <form action="{% url 'login' %}" method="post" novalidate>
                             {% csrf_token %}
 
