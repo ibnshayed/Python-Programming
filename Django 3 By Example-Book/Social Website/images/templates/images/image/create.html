@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Bookmark an image{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col col-md-12">
+                <div class="card">
+                    <div class="card-body py-5 px-5">
+                        <h1>Bookmark an image</h1>
+                        <hr>
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <img class="img-fluid" src="{{ request.GET.url }}">
+                            </div>
+                            <div class="col col-md-6">
+                                <form method="post">
+                                    <div class="mb-3">
+                                        {{form.title|as_crispy_field}}
+                                    </div>
+                                    <div class="mb-3">
+                                        {{form.description|as_crispy_field}}
+                                    </div>
+                                    <!-- It's very important to give hidden input in form -->
+                                    {{ form.url }}
+                                    {% csrf_token %}
+                                    <button class="btn btn-primary" type="submit">Bookmark it</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+<!-- https://127.0.0.1:8000/images/create/?title=Demo%20Pic&url=https://www.w3schools.com/w3css/img_avatar3.png -->

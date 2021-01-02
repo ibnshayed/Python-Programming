@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django_extensions',
 
     # Local
+    'images.apps.ImagesConfig',
 ]
 
 MIDDLEWARE = [
@@ -164,8 +165,6 @@ SOCIAL_AUTH_FACEBOOK_SCOPE = ['email'] # optional
 # Google social auth
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'XXX' # Google Consumer Key
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XXX' # Google Consumer Secret
-
-
 
 
 
