@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'social_django',
     'django_extensions',
+    'easy_thumbnails',
 
     # Local
     'images.apps.ImagesConfig',
@@ -90,7 +91,7 @@ WSGI_APPLICATION = 'core_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 
