@@ -1,6 +1,6 @@
-from typing import Optional
-
 from fastapi import FastAPI
+
+from typing import Optional, List, Dict, Set, Tuple # these are the type from typing
 
 app = FastAPI()
 
