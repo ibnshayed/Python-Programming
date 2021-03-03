@@ -184,10 +184,14 @@ ul.errorlist {
     overflow:hidden;
 }
 
+.product-list-item{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .product-list .item {
     width:25%;
     padding:10px 20px 10px 0;
-    float:left;
     text-align:center;
     line-height:1.2;
 }

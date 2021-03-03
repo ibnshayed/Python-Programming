@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # Local
     'shop.apps.ShopConfig',
+    'cart.apps.CartConfig',
 
 ]
 
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
             ],
         },
     },
@@ -125,9 +127,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# static files directory
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+# media files directory
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+# cart session
+CART_SESSION_ID = 'cart'
