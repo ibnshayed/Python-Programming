@@ -9,8 +9,8 @@ class Category(models.Model):
 
     class Meta:
         ordering = ('name',)
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
+        verbose_name = 'category' # django automatically do from class name
+        verbose_name_plural = 'categories' # django automatically do from class name + s
 
     def __str__(self):
         return self.name
